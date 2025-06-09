@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zico Burguer - Hamburgueria Artesanal em Grussaí</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #0f0f0f;
+        color: #f8f8f8;
+      }
+
+      .hero-bg {
+        background: linear-gradient(
+            135deg,
+            rgba(15, 15, 15, 0.9) 0%,
+            rgba(0, 0, 0, 0.6) 100%
+          ),
+          url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1998&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 75% 50%,
+          rgba(252, 211, 77, 0.15) 0%,
+          transparent 70%
+        );
+      }
+
+      .burger-card {
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .burger-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px -12px rgba(252, 211, 77, 0.25);
+      }
+
+      .burger-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent 60%,
+          rgba(0, 0, 0, 0.8)
+        );
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .burger-card:hover::after {
+        opacity: 1;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(252, 211, 77, 0.7);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 10px rgba(252, 211, 77, 0);
+        }
+      }
+
+      .animate-pulse2 {
+        animation: pulse 3s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header/Navbar -->
+    <header class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-blur-sm">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <div class="text-amber-400 text-3xl mr-2">
+              <i class="fas fa-hamburger"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-white">
+              <span class="text-amber-400">ZICO</span> BURGUER
+            </h1>
+          </div>
+
+          <nav class="hidden md:flex space-x-8">
+            <a href="#home" class="text-white hover:text-amber-400 transition"
+              >Início</a
+            >
+            <a
+              href="#burgers"
+              class="text-white hover:text-amber-400 transition"
+              >Smashs</a
+            >
+            <a href="#about" class="text-white hover:text-amber-400 transition"
+              >Sobre</a
+            >
+            <a
+              href="#contact"
+              class="text-white hover:text-amber-400 transition"
+              >Contato</a
+            >
+          </nav>
+
+          <div class="md:hidden">
+            <button id="menu-toggle" class="text-white focus:outline-none">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4"
+      >
+        <div class="flex flex-col space-y-4">
+          <a href="#home" class="text-white hover:text-amber-400 transition"
+            >Início</a
+          >
+          <a href="#burgers" class="text-white hover:text-amber-400 transition"
+            >Smashs</a
+          >
+          <a href="#about" class="text-white hover:text-amber-400 transition"
+            >Sobre</a
+          >
+          <a href="#contact" class="text-white hover:text-amber-400 transition"
+            >Contato</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-bg min-h-screen flex items-center justify-center text-center pt-20 pb-10 px-4"
+    >
+      <div class="container mx-auto max-w-4xl">
+        <div
+          class="bg-black bg-opacity-70 rounded-xl p-8 md:p-12 backdrop-blur-sm"
+        >
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            <span class="text-amber-400">ZICO</span>
+            <span class="text-white">BURGUER</span>
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-white">
+            Os melhores Smash Burgers de Grussaí | Sexta a Domingo, 20h - 00h
+          </p>
+          <div class="animate-pulse2">
+            <a
+              href="#burgers"
+              class="inline-block bg-amber-400 hover:bg-amber-500 text-black font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105"
+            >
+              PEÇA AGORA <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Burgers Section -->
+    <section id="burgers" class="py-20 bg-black">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
+          NOSSOS <span class="text-amber-400">SMASHS</span>
+        </h2>
+        <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
+          Hamburguers artesanais feitos com carne 100% premium e ingredientes
+          selecionados. Delivery exclusivo em Grussaí - São João da Barra/RJ.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Big Mac Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1998&q=80"
+                alt="Zico Classic"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <h3 class="text-2xl font-bold text-white">ZICO CLASSIC</h3>
+                <p class="text-amber-400 font-medium">R$ 35,90</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-300 mb-4">
+                Nosso clássico - dois hambúrgueres smash 75g, alface americana,
+                queijo derretido, molho especial, cebola e picles em um pão com
+                gergelim.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-1 text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <button
+                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition hover:shadow-lg hover:shadow-amber-400/30"
+                >
+                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cheddar McMelt Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="
+                        https://www.google.com/imgres?q=imagem%20smash%20cheddar&imgurl=https%3A%2F%2Fstatic.ifood-static.com.br%2Fimage%2Fupload%2Ft_medium%2Fpratos%2F2cf55c15-bbd0-4d8a-94f6-1786c415c05c%2F202306192309_WLNO_i.jpg&imgrefurl=https%3A%2F%2Fwww.ifood.com.br%2Fdelivery%2Fsao-paulo-sp%2Freal-burger-vila-gomes-cardim%2F2cf55c15-bbd0-4d8a-94f6-1786c415c05c%3Fprato%3Db9cbdc65-13db-432c-b332-cc308a7fb989&docid=zEyy6C7KzjCfXM&tbnid=5n9tQCi2Xl_81M&vet=12ahUKEwiK08nF9OSNAxVn8QIHHXNDJNEQM3oECBwQAA..i&w=600&h=450&hcb=2&ved=2ahUKEwiK08nF9OSNAxVn8QIHHXNDJNEQM3oECBwQAA"
+                alt="Zico Cheddar"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <h3 class="text-2xl font-bold text-white">ZICO CHEDDAR</h3>
+                <p class="text-amber-400 font-medium">R$ 34,90</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-300 mb-4">
+                Hambúrguer smash 130g com generosa porção de cheddar cremoso,
+                cebola caramelizada, bacon crocante e nosso pão brioche
+                especial.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-1 text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <button
+                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
+                >
+                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- McChicken Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1630450202872-e8759d87569b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80"
+                alt="Zico Chicken"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <h3 class="text-2xl font-bold text-white">ZICO CHICKEN</h3>
+                <p class="text-amber-400 font-medium">R$ 32,90</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-300 mb-4">
+                Filé de frango empanado crocante, alface americana fresca,
+                maionese especial e pão de batata com um toque de mel.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-1 text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <button
+                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
+                >
+                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-black to-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">
+              A <span class="text-amber-400">ZICO BURGUER</span>
+            </h2>
+            <p class="text-gray-300 mb-4">
+              Nascemos da paixão por hambúrgueres artesanais de qualidade em
+              Grussaí. Criamos experiências gastronômicas simples, porém
+              memoráveis, usando apenas ingredientes premium.
+            </p>
+            <p class="text-gray-300 mb-6">
+              Nossos hambúrgueres são preparados no momento do pedido utilizando
+              técnicas de <strong>smash burger</strong> que garantem um sabor
+              único e textura inigualável.
+            </p>
+            <div class="bg-gray-800 rounded-lg p-6">
+              <h3 class="text-xl font-bold text-white mb-3">
+                <i class="fas fa-clock text-amber-400 mr-2"></i> Horário de
+                Funcionamento
+              </h3>
+              <p class="text-gray-300">
+                <strong>Sexta a Domingo:</strong> 20h - 00h<br />
+                Apenas Delivery via WhatsApp
+              </p>
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <div class="relative rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1571091718767-18b57b25e999?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
+                alt="Cozinha Zico Burguer"
+                class="w-full h-auto"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-6">
+                <h3 class="text-2xl font-bold text-white">SABOR QUE INSPIRA</h3>
+                <p class="text-amber-400">Grussaí - São João da Barra/RJ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact/CTA Section -->
+    <section id="contact" class="py-20 bg-amber-400 text-black">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">PRONTO PARA PEDIR?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Faça seu pedido diretamente pelo WhatsApp e receba em casa o melhor
+          hambúrguer de Grussaí!
+        </p>
+        <div
+          class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+        >
+          <a
+            href="https://wa.me/5522999999999"
+            class="inline-flex items-center justify-center bg-black text-amber-400 hover:bg-gray-900 font-bold py-4 px-8 rounded-full text-lg transition"
+          >
+            <i class="fab fa-whatsapp text-2xl mr-3"></i> PEDIR AGORA
+          </a>
+          <a
+            href="tel:+5522999999999"
+            class="inline-flex items-center justify-center bg-black text-amber-400 hover:bg-gray-900 font-bold py-4 px-8 rounded-full text-lg transition"
+          >
+            <i class="fas fa-phone-alt mr-3"></i> LIGAR
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex items-center mb-6 md:mb-0">
+            <div class="text-amber-400 text-3xl mr-3">
+              <i class="fas fa-hamburger"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">
+              <span class="text-amber-400">ZICO</span> BURGUER
+            </h2>
+          </div>
+
+          <div class="flex space-x-6 mb-6 md:mb-0">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-amber-400 text-xl transition"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-amber-400 text-xl transition"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-amber-400 text-xl transition"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+
+          <div class="text-gray-400 text-center md:text-right">
+            <p>Grussaí - São João da Barra/RJ</p>
+            <p>© 2023 Zico Burguer. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 bg-amber-400 hover:bg-amber-500 text-black p-3 rounded-full shadow-lg transition opacity-0 invisible"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+      // Mobile Menu Toggle
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+
+      // Back to Top Button
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "visible");
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 100,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById("mobile-menu");
+            if (!mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
