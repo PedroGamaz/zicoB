@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zico Burguer - Hamburgueria Artesanal em Grussaí</title>
-    <link rel="icon" type="image/x-icon" href="icons/peace_624615.png">
+    <link rel="icon" type="image/x-icon" href="icons/peace_624615.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -76,10 +76,6 @@
         z-index: 2;
         opacity: 0;
         transition: opacity 0.3s ease;
-      }
-
-      .burger-card:hover::after {
-        opacity: 1;
       }
 
       @keyframes pulse {
@@ -171,7 +167,7 @@
             <span class="text-white">BURGUER</span>
           </h1>
           <p class="text-xl md:text-2xl mb-8 text-white">
-            Os melhores Smash Burgers de Grussaí | Sexta a Domingo, 20h - 00h
+            Os melhores Burgers de Grussaí | Sexta a Domingo, 20h - 00h
           </p>
           <div class="animate-pulse2">
             <a
@@ -189,7 +185,7 @@
     <section id="burgers" class="py-20 bg-black">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
-          NOSSOS <span class="text-amber-400">SMASHS</span>
+          NOSSOS <span class="text-amber-400">BURGUERS</span>
         </h2>
         <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
           Hamburguers artesanais feitos com carne 100% premium e ingredientes
@@ -216,10 +212,11 @@
               </div>
             </div>
             <div class="p-6">
+              <p style="font-size: larger">Nosso clássico!</p>
               <p class="text-gray-300 mb-4">
-                Nosso clássico - dois hambúrgueres smash 75g, alface americana,
-                queijo derretido, molho especial, cebola e picles em um pão com
-                gergelim.
+                Pão brioche macio, duas carnes suculentas, molho especial da
+                casa, alface americana crocante e uma fatia de cheddar cremoso.
+                Perfeito para quem não abre mão de um hambúrguer completo.
               </p>
               <div class="flex justify-between items-center">
                 <div class="flex space-x-1 text-amber-400">
@@ -242,41 +239,47 @@
           <div
             class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
           >
-            <div class="relative h-64 overflow-hidden">
-              <img
-                src="icons/cheddar.jpeg"
-                alt="Zico Cheddar"
-                class="w-full h-full object-cover"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-              ></div>
-              <div class="absolute bottom-0 left-0 p-4">
-                <h3 class="text-2xl font-bold text-white">ZICO CHEDDAR</h3>
-                <p class="text-amber-400 font-medium">R$ 34,90</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-300 mb-4">
-                Hambúrguer smash 130g com generosa porção de cheddar cremoso,
-                cebola caramelizada, bacon crocante e nosso pão brioche
-                especial.
-              </p>
-              <div class="flex justify-between items-center">
-                <div class="flex space-x-1 text-amber-400">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
+            <a href="https://wa.me/5522998168750">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="icons/cheddar.jpeg"
+                  alt="Zico Cheddar"
+                  class="w-full h-full object-cover"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+                ></div>
+                <div class="absolute bottom-0 left-0 p-4">
+                  <h3 class="text-2xl font-bold text-white">ZICO CHEDDAR</h3>
+                  <p class="text-amber-400 font-medium">R$ 34,90</p>
                 </div>
-                <button
-                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
-                >
-                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                </button>
               </div>
-            </div>
+              <div class="p-6">
+                <p style="font-size: larger">
+                  Para quem gosta de sabor marcante!
+                </p>
+                <p class="text-gray-300 mb-4">
+                  Pão com gergelim levemente tostado, hambúrguer suculento, 3
+                  fatias de cheddar derretido e cebola caramelizada no ponto
+                  certo. Simples, intenso e irresistível.
+                </p>
+                <div class="flex justify-between items-center">
+                  <div class="flex space-x-1 text-amber-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <a href="https://wa.me/5522998168750"></a>
+                  <button
+                    class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
+                  >
+                    Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
           </div>
 
           <!-- McChicken Style -->
@@ -298,10 +301,290 @@
               </div>
             </div>
             <div class="p-6">
-              <p class="text-gray-300 mb-4">
-                Filé de frango empanado crocante, alface americana fresca,
-                maionese especial e pão de batata com um toque de mel.
+              <p style="font-size: larger">
+                Crocância e frescor em perfeita harmonia.
               </p>
+              <p class="text-gray-300 mb-4">
+                Pão fofinho, frango empanado crocante, maionese verde artesanal
+                e alface americana fresca. Um lanche leve, mas cheio de
+                personalidade.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-1 text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <button
+                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
+                >
+                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="burgers" class="py-20 bg-black">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
+          NOSSOS <span class="text-amber-400">COMBOS</span>
+        </h2>
+        <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
+          Promoções irressistíves
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Big Mac Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="icons/bigmac.jpeg"
+                alt="Zico Classic"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <h3 class="text-2xl font-bold text-white">COMBO 1</h3>
+                <p class="text-amber-400 font-medium">R$ 55,90</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p style="font-size: larger">Nosso clássico!</p>
+              <p class="text-gray-300 mb-4">
+                Pão brioche macio, duas carnes suculentas, molho especial da
+                casa, alface americana crocante e uma fatia de cheddar cremoso.
+                Perfeito para quem não abre mão de um hambúrguer completo.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-1 text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <button
+                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition hover:shadow-lg hover:shadow-amber-400/30"
+                >
+                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cheddar McMelt Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <a href="https://wa.me/5522998168750">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="icons/cheddar.jpeg"
+                  alt="Zico Cheddar"
+                  class="w-full h-full object-cover"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+                ></div>
+                <div class="absolute bottom-0 left-0 p-4">
+                  <h3 class="text-2xl font-bold text-white">COMBO 2</h3>
+                  <p class="text-amber-400 font-medium">R$ 64,90</p>
+                </div>
+              </div>
+              <div class="p-6">
+                <p style="font-size: larger">
+                  Para quem gosta de sabor marcante!
+                </p>
+                <p class="text-gray-300 mb-4">
+                  Pão com gergelim levemente tostado, hambúrguer suculento, 3
+                  fatias de cheddar derretido e cebola caramelizada no ponto
+                  certo. Simples, intenso e irresistível.
+                </p>
+                <div class="flex justify-between items-center">
+                  <div class="flex space-x-1 text-amber-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <a href="https://wa.me/5522998168750"></a>
+                  <button
+                    class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
+                  >
+                    Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- McChicken Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="icons/chicken.jpeg"
+                alt="Zico Chicken"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <h3 class="text-2xl font-bold text-white">COMBO KIDS</h3>
+                <p class="text-amber-400 font-medium">R$ 35,90</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p style="font-size: larger">
+                Crocância e frescor em perfeita harmonia.
+              </p>
+              <p class="text-gray-300 mb-4">
+                Pão fofinho, frango empanado crocante, maionese verde artesanal
+                e alface americana fresca. Um lanche leve, mas cheio de
+                personalidade.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-1 text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <button
+                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
+                >
+                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Bebidas" class="py-20 bg-black">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
+          BEBIDAS <span class="text-amber-400"></span>
+        </h2>
+        <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto"></p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Big Mac Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="icons/bigmac.jpeg"
+                alt="Zico Classic"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <h3 class="text-2xl font-bold text-white">Refrigerante Lata</h3>
+                <p class="text-amber-400 font-medium">R$ 7,00</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p style="font-size: larger"></p>
+              <p class="text-gray-300 mb-4"></p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-1 text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <button
+                  class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition hover:shadow-lg hover:shadow-amber-400/30"
+                >
+                  Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cheddar McMelt Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <a href="https://wa.me/5522998168750">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="icons/cheddar.jpeg"
+                  alt="Zico Cheddar"
+                  class="w-full h-full object-cover"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+                ></div>
+                <div class="absolute bottom-0 left-0 p-4">
+                  <h3 class="text-2xl font-bold text-white">
+                    Refrigerante 600ml
+                  </h3>
+                  <p class="text-amber-400 font-medium">R$ 11,00</p>
+                </div>
+              </div>
+              <div class="p-6">
+                <p style="font-size: larger"></p>
+                <p class="text-gray-300 mb-4"></p>
+                <div class="flex justify-between items-center">
+                  <div class="flex space-x-1 text-amber-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <a href="https://wa.me/5522998168750"></a>
+                  <button
+                    class="bg-amber-400 hover:bg-amber-500 text-black font-semibold py-2 px-4 rounded-full transition"
+                  >
+                    Pedir <i class="fas fa-shopping-bag ml-1"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- McChicken Style -->
+          <div
+            class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="icons/chicken.jpeg"
+                alt="Zico Chicken"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <h3 class="text-2xl font-bold text-white">Suco Lata</h3>
+                <p class="text-amber-400 font-medium">R$ 8,00</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p style="font-size: larger"></p>
+              <p class="text-gray-300 mb-4"></p>
               <div class="flex justify-between items-center">
                 <div class="flex space-x-1 text-amber-400">
                   <i class="fas fa-star"></i>
