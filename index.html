@@ -1,797 +1,1364 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt">
   <head>
+    <base target="_self" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zico Burguer - Hamburgueria Artesanal em Grussaí</title>
-    <link rel="icon" type="image/x-icon" href="icons/peace_624615.png" />
+    <title>BN Lupas - Catálogo de Óculos e Relógios</title>
+    <meta
+      name="description"
+      content="Catálogo completo de óculos e relógios da BN Lupas. Modelos Juliet, Corvette, Romeu 2, Doublé X e muito mais."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ffffff",
+              secondary: "#e0f2fe",
+              accent: "#38bdf8",
+              text: "#1e1e1e",
+              "text-light": "#666666",
+            },
+            fontFamily: {
+              sans: ["Inter", "Helvetica", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
     <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        background-color: #0f0f0f;
-        color: #f8f8f8;
-      }
-
-      .hero-bg {
-        background: linear-gradient(
-            135deg,
-            rgba(15, 15, 15, 0.9) 0%,
-            rgba(0, 0, 0, 0.6) 100%
-          ),
-          url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1998&q=80");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        position: relative;
-      }
-
-      .hero-bg::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          circle at 75% 50%,
-          rgba(252, 211, 77, 0.15) 0%,
-          transparent 70%
-        );
-      }
-
-      .burger-card {
-        position: relative;
-        z-index: 1;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      .burger-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 25px 50px -12px rgba(252, 211, 77, 0.25);
-      }
-
-      .burger-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          transparent 60%,
-          rgba(0, 0, 0, 0.8)
-        );
-        z-index: 2;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      @keyframes pulse {
-        50% {
-          transform: scale(1.05);
-          box-shadow: 0 0 0 10px rgba(252, 211, 77, 0);
-        }
-      }
-
-      .animate-pulse2 {
-        animation: pulse 3s infinite;
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+      * {
+        font-family: "Inter", sans-serif;
       }
     </style>
   </head>
-  <body>
-    <!-- Header/Navbar -->
-    <header class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-blur-sm">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="text-amber-400 text-3xl mr-2">
-              <i class="fas fa-hamburger"></i>
-            </div>
-            <h1 class="text-2xl font-bold text-white">
-              <span class="text-amber-400">ZICO</span> BURGUER
-            </h1>
+  <body class="min-h-screen bg-primary text-text">
+    <header class="sticky top-0 z-50 bg-primary shadow-sm">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-2">
+            <img
+              src="icons/WhatsApp Image 2026-03-07 at 22.32.24 (2).jpeg"
+              alt="Logo BN Lupas"
+              class="rounded-full"
+            />
+            <h1 class="text-xl font-bold">BN Lupas</h1>
           </div>
-
-          <nav class="hidden md:flex space-x-8">
-            <a href="#home" class="text-white hover:text-amber-400 transition"
-              >Início</a
-            >
+          <ul id="nav-list" class="hidden md:flex gap-6"></ul>
+          <div class="flex items-center gap-4">
             <a
-              href="#burgers"
-              class="text-white hover:text-amber-400 transition"
-              >Smashs</a
+              href="https://www.instagram.com/bn.lupas"
+              target="_blank"
+              class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-blue-500 transition"
+              >Instagram DM</a
             >
-            <a href="#about" class="text-white hover:text-amber-400 transition"
-              >Sobre</a
-            >
-            <a
-              href="#contact"
-              class="text-white hover:text-amber-400 transition"
-              >Contato</a
-            >
-          </nav>
-
-          <div class="md:hidden">
-            <button id="menu-toggle" class="text-white focus:outline-none">
-              <i class="fas fa-bars text-2xl"></i>
-            </button>
           </div>
         </div>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4"
-      >
-        <div class="flex flex-col space-y-4">
-          <a href="#home" class="text-white hover:text-amber-400 transition"
-            >Início</a
-          >
-          <a href="#burgers" class="text-white hover:text-amber-400 transition"
-            >Smashs</a
-          >
-          <a href="#about" class="text-white hover:text-amber-400 transition"
-            >Sobre</a
-          >
-          <a href="#contact" class="text-white hover:text-amber-400 transition"
-            >Contato</a
-          >
-        </div>
-      </div>
+      </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section
-      id="home"
-      class="hero-bg min-h-screen flex items-center justify-center text-center pt-20 pb-10 px-4"
-    >
-      <div class="container mx-auto max-w-4xl">
-        <div
-          class="bg-black bg-opacity-70 rounded-xl p-8 md:p-12 backdrop-blur-sm"
-        >
-          <h1 class="text-4xl md:text-6xl font-bold mb-6">
-            <span class="text-amber-400">ZICO</span>
-            <span class="text-white">BURGUER</span>
-          </h1>
-          <p class="text-xl md:text-2xl mb-8 text-white">
-            Os melhores Burgers de Grussaí | Sexta a Domingo, 20h - 00h
-          </p>
-          <div class="animate-pulse2">
-            <a
-              href="#burgers"
-              class="inline-block bg-amber-400 hover:bg-amber-500 text-black font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105"
-            >
-              PEÇA AGORA <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-   
-<section id="burgers" class="py-20 bg-black">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
-            NOSSOS <span class="text-amber-400">BURGUERS</span>
-        </h2>
-        <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
-            Hamburguers artesanais feitos com carne 100% premium e ingredientes
-            selecionados. Delivery exclusivo em Grussaí - São João da Barra/RJ.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20o%20Zico%20Classic!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/MACATT.png"
-                        alt="Zico Classic"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">ZICO CLASSIC</h3>
-                        <p class="text-amber-400 font-medium">R$ 35,90</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger">Nosso clássico!</p>
-                    <p class="text-gray-300 mb-4">
-                        Pão brioche macio, duas carnes suculentas, molho especial da
-                        casa, alface americana crocante e uma fatia de cheddar cremoso.
-                        Perfeito para quem não abre mão de um hambúrguer completo.
-                    </p>
-                    <div class="flex justify-between items-center mt-auto"> <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20o%20Zico%20Cheddar!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/CHEDDARATT.png"
-                        alt="Zico Cheddar"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">ZICO CHEDDAR</h3>
-                        <p class="text-amber-400 font-medium">R$ 34,90</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger">
-                        Para quem gosta de sabor marcante!
-                    </p>
-                    <p class="text-gray-300 mb-4">
-                        Pão com gergelim levemente tostado, hambúrguer suculento, 3
-                        fatias de cheddar derretido e cebola caramelizada no ponto
-                        certo. Simples, intenso e irresistível.
-                    </p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20o%20Zico%20Chicken!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/CHICKENATT4.png"
-                        alt="Zico Chicken"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">ZICO CHICKEN</h3>
-                        <p class="text-amber-400 font-medium">R$ 32,90</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger">
-                        Crocância e frescor em perfeita harmonia.
-                    </p>
-                    <p class="text-gray-300 mb-4">
-                        Pão fofinho, frango empanado crocante, maionese verde artesanal
-                        e alface americana fresca. Um lanche leve, mas cheio de
-                        personalidade.
-                    </p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-  
-<section id="combos" class="py-20 bg-black">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
-            NOSSOS <span class="text-amber-400">COMBOS</span>
-        </h2>
-        <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
-            Promoções irresistíveis
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20o%20Combo%201!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/COMBO1.png"
-                        alt="Combo 1"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">COMBO 1</h3>
-                        <p class="text-amber-400 font-medium">R$ 55,90</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger">Nosso clássico!</p>
-                    <p class="text-gray-300 mb-4">
-                        Pão brioche macio, duas carnes suculentas, molho especial da
-                        casa, alface americana crocante e uma fatia de cheddar cremoso.
-                        Perfeito para quem não abre mão de um hambúrguer completo.
-                    </p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20o%20Combo%202!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/COMBO2ATT.png"
-                        alt="Combo 2"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">COMBO 2</h3>
-                        <p class="text-amber-400 font-medium">R$ 64,90</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger">
-                        Para quem gosta de sabor marcante!
-                    </p>
-                    <p class="text-gray-300 mb-4">
-                        Pão com gergelim levemente tostado, hambúrguer suculento, 3
-                        fatias de cheddar derretido e cebola caramelizada no ponto
-                        certo. Simples, intenso e irresistível.
-                    </p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20o%20Combo%20Kids!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/COMBOKIDSATT.png"
-                        alt="Combo Kids"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">COMBO KIDS</h3>
-                        <p class="text-amber-400 font-medium">R$ 35,90</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger">
-                        Crocância e frescor em perfeita harmonia.
-                    </p>
-                    <p class="text-gray-300 mb-4">
-                        Pão fofinho, frango empanado crocante, maionese verde artesanal
-                        e alface americana fresca. Um lanche leve, mas cheio de
-                        personalidade.
-                    </p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="Bebidas" class="py-20 bg-black">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
-            BEBIDAS <span class="text-amber-400"></span>
-        </h2>
-        <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto"></p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20Refrigerante%20Lata!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/LLATA2.png"
-                        alt="Refrigerante Lata"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">Refrigerante Lata</h3>
-                        <p class="text-amber-400 font-medium">R$ 7,00</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger"></p>
-                    <p class="text-gray-300 mb-4"></p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20Refrigerante%20600ml!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/6002.png"
-                        alt="Refrigerante 600ml"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">
-                            Refrigerante 600ml
-                        </h3>
-                        <p class="text-amber-400 font-medium">R$ 11,00</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger"></p>
-                    <p class="text-gray-300 mb-4"></p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a
-                href="https://wa.me/5522998168750?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20Suco%20Lata!"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="burger-card bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg block"
-                style="text-decoration: none; color: inherit;"
-            >
-                <div class="relative h-64 overflow-hidden">
-                    <img
-                        src="icons/SUCO2.png"
-                        alt="Suco Lata"
-                        class="w-full h-full object-cover"
-                    />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-                    ></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-2xl font-bold text-white">Suco Lata</h3>
-                        <p class="text-amber-400 font-medium">R$ 8,00</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p style="font-size: larger"></p>
-                    <p class="text-gray-300 mb-4"></p>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="flex space-x-1 text-amber-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <div
-                            class="bg-amber-400 text-black font-semibold py-2 px-4 rounded-full transition"
-                        >
-                            Pedir <i class="fas fa-shopping-bag ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gradient-to-b from-black to-gray-900">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-            <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">
-              A <span class="text-amber-400">ZICO BURGUER</span>
-            </h2>
-            <p class="text-gray-300 mb-4">
-              Nascemos da paixão por hambúrgueres artesanais de qualidade em
-              Grussaí. Criamos experiências gastronômicas simples, porém
-              memoráveis, usando apenas ingredientes premium.
-            </p>
-            <p class="text-gray-300 mb-6">
-              Nossos hambúrgueres são preparados no momento do pedido utilizando
-              técnicas de <strong>smash burger</strong> que garantem um sabor
-              único e textura inigualável.
-            </p>
-            <div class="bg-gray-800 rounded-lg p-6">
-              <h3 class="text-xl font-bold text-white mb-3">
-                <i class="fas fa-clock text-amber-400 mr-2"></i> Horário de
-                Funcionamento
-              </h3>
-              <p class="text-gray-300">
-                <strong>Sexta a Domingo:</strong> 20h - 00h<br />
-                Apenas Delivery via WhatsApp
-              </p>
-            </div>
-          </div>
-          <div class="md:w-1/2">
-            <div class="relative rounded-xl overflow-hidden shadow-2xl">
-              <img
-                src="icons/imgCozinha.jpeg"
-                alt="Cozinha Zico Burguer"
-                class="w-full h-auto"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-              ></div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h3 class="text-2xl font-bold text-white">SABOR QUE INSPIRA</h3>
-                <p class="text-amber-400">Grussaí - São João da Barra/RJ</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact/CTA Section -->
-    <section id="contact" class="py-20 bg-amber-400 text-black">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6">PRONTO PARA PEDIR?</h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">
-          Faça seu pedido diretamente pelo WhatsApp e receba em casa o melhor
-          hambúrguer de Grussaí!
+    <main class="container mx-auto px-4 py-8">
+      <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-6">Catálogo de Óculos</h2>
+        <p class="text-text-light mb-8">
+          Explore nossos modelos disponíveis. Clique em qualquer modelo para ver
+          mais fotos.
         </p>
         <div
-          class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6"
-        >
-          <a
-            href="https://wa.me/5522998168750"
-            class="inline-flex items-center justify-center bg-black text-amber-400 hover:bg-gray-900 font-bold py-4 px-8 rounded-full text-lg transition"
-          >
-            <i class="fab fa-whatsapp text-2xl mr-3"></i> PEDIR AGORA
-          </a>
-          <a
-            href="tel:+5522998168750"
-            class="inline-flex items-center justify-center bg-black text-amber-400 hover:bg-gray-900 font-bold py-4 px-8 rounded-full text-lg transition"
-          >
-            <i class="fas fa-phone-alt mr-3"></i> LIGAR
-          </a>
-        </div>
-      </div>
-    </section>
+          id="glasses-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        ></div>
+      </section>
 
-    <!-- Footer -->
-    <footer class="bg-black py-12">
+      <section class="mb-12">
+        <h3 class="text-2xl font-semibold mb-6">Catálogo de Relógios</h3>
+        <p class="text-text-light mb-8">
+          Relógios de marca com qualidade premium.
+        </p>
+        <div
+          id="watches-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        ></div>
+      </section>
+
+      <section class="mb-12 bg-secondary p-8 rounded-xl">
+        <h3 class="text-2xl font-semibold mb-4">Como Comprar</h3>
+        <div
+          id="steps-list"
+          class="grid grid-cols-1 md:grid-cols-3 gap-6"
+        ></div>
+      </section>
+    </main>
+
+    <footer class="bg-secondary py-12">
       <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <div class="flex items-center mb-6 md:mb-0">
-            <div class="text-amber-400 text-3xl mr-3">
-              <i class="fas fa-hamburger"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white">
-              <span class="text-amber-400">ZICO</span> BURGUER
-            </h2>
-          </div>
-
-          <div class="flex space-x-6 mb-6 md:mb-0">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start gap-8"
+        >
+          <div class="flex-1">
+            <h4 class="text-lg font-semibold mb-4">BN Lupas</h4>
+            <p class="text-text-light mb-4">
+              Loja online especializada em óculos e relógios modernos e
+              elegantes.
+            </p>
             <a
-              href="https://www.instagram.com/srzicobeachbeer/"
-              class="text-gray-400 hover:text-amber-400 text-xl transition"
+              href="https://www.instagram.com/bn.lupas
+              target="_blank"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg hover:bg-blue-500 transition"
             >
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a
-              href="#"
-              class="text-gray-400 hover:text-amber-400 text-xl transition"
-            >
-              <i class="fab fa-facebook"></i>
-            </a>
-            <a
-              href="https://wa.me/5522998168750"
-              class="text-gray-400 hover:text-amber-400 text-xl transition"
-            >
-              <i class="fab fa-whatsapp"></i>
+              <span>Comprar via Instagram DM</span>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.691-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.947-.073zM12 7.932a4.068 4.068 0 1 0 0 8.136 4.068 4.068 0 0 0 0-8.136zm0 1.5a2.568 2.568 0 1 1 0 5.136 2.568 2.568 0 0 0 0-5.136zm6.3-3.1a.95.95 0 1 0 0 1.9.95.95 0 0 0 0-1.9z"
+                ></path>
+              </svg>
             </a>
           </div>
-
-          <div class="text-gray-400 text-center md:text-right">
-            <p>Grussaí - São João da Barra/RJ</p>
-            <p>© 2025 Zico Burguer. Todos os direitos reservados.</p>
+          <div class="flex-1">
+            <h4 class="text-lg font-semibold mb-4">Contato</h4>
+            <ul id="contact-list" class="space-y-2"></ul>
+          </div>
+          <div class="flex-1">
+            <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+            <ul id="footer-links" class="space-y-2"></ul>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button
-      id="back-to-top"
-      class="fixed bottom-6 right-6 bg-amber-400 hover:bg-amber-500 text-black p-3 rounded-full shadow-lg transition opacity-0 invisible"
-    >
-      <i class="fas fa-arrow-up"></i>
-    </button>
-
     <script>
-      // Mobile Menu Toggle
-      document
-        .getElementById("menu-toggle")
-        .addEventListener("click", function () {
-          const menu = document.getElementById("mobile-menu");
-          menu.classList.toggle("hidden");
-        });
+      // Data layer
+      const navigationItems = [
+        { label: "Óculos", href: "#glasses" },
+        { label: "Relógios", href: "#watches" },
+        { label: "Como Comprar", href: "#how-to-buy" },
+        { label: "Contato", href: "#contact" },
+      ];
 
-      // Back to Top Button
-      const backToTopButton = document.getElementById("back-to-top");
+      const glassesModels = [
+        {
+          id: "juliet",
+          name: "Juliet",
+          images: [
+            "icons/lupas/juliet/tio 2 lente black_.jpg",
+            "icons/lupas/Juliet/IMG_6822.jpg",
+            "https://picsum.photos/600/400?random=glasses1c",
+          ],
+        },
+        // {
+        //     "id": "corvette-tuto",
+        //     "name": "Corvette Tuto",
+        //     "images": [
+        //         "https://picsum.photos/600/400?random=glasses2a",
+        //         "https://picsum.photos/600/400?random=glasses2b",
+        //         "https://picsum.photos/600/400?random=glasses2c"
+        //     ]
+        // },
+        {
+          id: "romeu-2",
+          name: "Romeu 2",
+          images: [
+            "icons/lupas/Romeu 2/IMG_4569.jpg",
+            "icons/lupas/Romeu 2/IMG_4572.jpg",
+            "icons/lupas/Romeu 2/IMG_4578.jpg",
+            "icons/lupas/Romeu 2/IMG_4585.jpg",
+          ],
+        },
+        {
+          id: "double-x",
+          name: "Doublé X",
+          images: [
+            "icons/lupas/Doublé X/IMG_4179.jpg",
+            "icons/lupas/Doublé X/IMG_4193.jpg",
+            "icons/lupas/Doublé X/IMG_4197.jpg",
+          ],
+        },
+        {
+          id: "penny",
+          name: "Penny",
+          images: [
+            "icons/lupas/Penny/IMG_6863.jpg",
+            "icons/lupas/Penny/IMG_6864.jpg",
+            "icons/lupas/Penny/IMG_6865.jpg",
+            "icons/lupas/Penny/IMG_6878.jpg",
+          ],
+        },
+        {
+          id: "radar",
+          name: "Radar",
+          images: [
+            "icons/lupas/Radar/IMG_4166.jpg",
+            "icons/lupas/Radar/IMG_4171.jpg",
+            "icons/lupas/Radar/IMG_4174.jpg",
+          ],
+        },
+        {
+          id: "descanso",
+          name: "Descanso",
+          images: [
+            "icons/lupas/Óculos de descanso/IMG_6963.jpg",
+            "icons/lupas/Óculos de descanso/IMG_6969.jpg",
+            "icons/lupas/Óculos de descanso/IMG_6972.jpg",
+            "icons/lupas/Óculos de descanso/IMG_6973.jpg",
+            "icons/lupas/Óculos de descanso/IMG_6974.jpg",
+          ],
+        },
+        {
+          id: "crosslink",
+          name: "Crosslink",
+          images: [
+            "icons/lupas/Crosslink/IMG_0491.jpg",
+            "icons/lupas/Crosslink/IMG_0492.jpg",
+          ],
+        },
+        {
+          id: "vilao",
+          name: "Vilão",
+          images: [
+            "icons/lupas/Vilão/IMG_4863.jpg",
+            "icons/lupas/Vilão/IMG_4865.jpg",
+            "icons/lupas/Vilão/IMG_4866.jpg",
+            "icons/lupas/Vilão/IMG_4868.jpg",
+            "icons/lupas/Vilão/IMG_4870.jpg",
+          ],
+        },
+        // {
+        //   id: "holbrook",
+        //   name: "Holbrook",
+        //   images: [
+        //     "https://picsum.photos/600/400?random=glasses10a",
+        //     "https://picsum.photos/600/400?random=glasses10b",
+        //     "https://picsum.photos/600/400?random=glasses10c",
+        //   ],
+        // },
+        {
+          id: "plantaris",
+          name: "Plantaris",
+          images: [
+            "icons/lupas/Plantaris/IMG_5209.jpg",
+            "icons/lupas/Plantaris/IMG_5991.jpg",
+            "icons/lupas/Plantaris/IMG_5999.jpg",
 
-      window.addEventListener("scroll", function () {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.remove("opacity-0", "invisible");
-          backToTopButton.classList.add("opacity-100", "visible");
-        } else {
-          backToTopButton.classList.remove("opacity-100", "visible");
-          backToTopButton.classList.add("opacity-0", "invisible");
+            
+          ],
+        },
+        {
+          id: "jacket",
+          name: "Jacket",
+          images: [
+            "icons/lupas/Eye jacket/IMG_4555.jpg",
+            "icons/lupas/Eye jacket/IMG_4558.jpg",
+            "icons/lupas/Eye jacket/IMG_4559.jpg",
+            
+          ],
+        },
+        // {
+        //   id: "tican",
+        //   name: "Tican",
+        //   images: [
+            
+          
+        //   ],
+        // },
+        {
+          id: "minute",
+          name: "Minute",
+          images: [
+            "icons/lupas/Minute/IMG_4546.jpg",
+            "icons/lupas/Minute/IMG_5535.jpg",
+            "icons/lupas/Minute/IMG_5537.jpg",
+          ],
+        },
+        {
+          id: "plante",
+          name: "Plante",
+          images: [
+            "icons/lupas/Plate/IMG_5530.jpg",
+            "icons/lupas/Plate/IMG_5533.jpg",
+            "icons/lupas/Plate/IMG_5534.jpg",
+          ],
+        },
+        {
+          id: "hstn",
+          name: "Hstn",
+          images: [
+            "icons/lupas/HSTN/IMG_0220.jpg",
+            "icons/lupas/HSTN/IMG_7770.jpg",
+            "icons/lupas/HSTN/IMG_7772.jpg",
+            
+          ],
+        },
+        // {
+        //   id: "lateralis",
+        //   name: "Lateralis",
+        //   images: [
+        //     "https://picsum.photos/600/400?random=glasses17a",
+        //     "https://picsum.photos/600/400?random=glasses17b",
+        //     "https://picsum.photos/600/400?random=glasses17c",
+        //   ],
+        // },
+        // {
+        //   id: "wire",
+        //   name: "Wire",
+        //   images: [
+        //     "https://picsum.photos/600/400?random=glasses18a",
+        //     "https://picsum.photos/600/400?random=glasses18b",
+        //     "https://picsum.photos/600/400?random=glasses18c",
+        //   ],
+        // },
+        {
+          id: "flak-2",
+          name: "Flak 2.0",
+          images: [
+            "icons/lupas/Flak 2.0/IMG_6939(1).jpg",
+            "icons/lupas/Flak 2.0/IMG_6945.jpg",
+            "icons/lupas/Flak 2.0/IMG_6948.jpg",
+            
+          ],
+        },
+        // {
+        //   id: "kit-radar",
+        //   name: "Kit Radar",
+        //   images: [
+        //     "https://picsum.photos/600/400?random=glasses20a",
+        //     "https://picsum.photos/600/400?random=glasses20b",
+        //     "https://picsum.photos/600/400?random=glasses20c",
+        //   ],
+        // },
+        // {
+        //   id: "gascan",
+        //   name: "Gascan",
+        //   images: [
+        //     "https://picsum.photos/600/400?random=glasses21a",
+        //     "https://picsum.photos/600/400?random=glasses21b",
+        //     "https://picsum.photos/600/400?random=glasses21c",
+        //   ],
+        // },
+        {
+          id: "dart",
+          name: "Dart",
+          images: [
+            "icons/lupas/Dart/IMG_7047.jpg",
+            
+          ],
+        },
+        {
+          id: "eye-jacket-redux",
+          name: "Eye Jacket Redux",
+          images: [
+            "icons/lupas/Eye jacket/IMG_4555.jpg",
+            "icons/lupas/Eye jacket/IMG_4558.jpg",
+            "icons/lupas/Eye jacket/IMG_4559.jpg",
+           
+          ],
+        },
+      ];
+
+      const watchesModels = [
+        {
+          id: "lacoste-vivara",
+          name: "Lacoste Vivara P.A",
+          images: [
+            "icons/relogio/lacoste/IMG_7538.jpg",
+            "icons/relogio/lacoste/IMG_7540.jpg",
+            "icons/relogio/lacoste/IMG_7544.jpg",
+            
+          ],
+        },
+        {
+          id: "Minute machine",
+          name: "Minute machine",
+          images: [
+            "icons/relogio/boss/FullSizeRender (1).jpg",
+            "icons/relogio/boss/FullSizeRender (2).jpg",
+            "icons/relogio/boss/FullSizeRender.jpg",
+          ],
+        },
+        {
+          id: "g-shock",
+          name: "G-Shock P.A",
+          images: [
+            "icons/relogio/gshok/IMG_6404.jpg",
+            "icons/relogio/gshok/IMG_6406.jpg",
+            "icons/relogio/gshok/IMG_6408.jpg",
+            "icons/relogio/gshok/IMG_6425.jpg",
+            
+          ],
+        },
+      ];
+
+      const steps = [
+        {
+          title: "Escolha o Modelo",
+          description:
+            "Selecione o óculos ou relógio que mais combina com você.",
+          icon: "👓",
+        },
+        {
+          title: "Veja as Fotos",
+          description: "Clique no modelo para ver todas as fotos disponíveis.",
+          icon: "📸",
+        },
+        {
+          title: "Contato via Instagram",
+          description:
+            "Envie uma mensagem direta no Instagram com o modelo escolhido.",
+          icon: "📱",
+        },
+      ];
+
+      const contactInfo = [
+        {
+          label: "Instagram DM",
+          value: "@bn.lupas",
+          href: "https://www.instagram.com/bn.lupas",
+        },
+        {
+          label: "E-mail",
+          value: "contato@bnlupas.com",
+          href: "mailto:contato@bnlupas.com",
+        },
+        {
+          label: "WhatsApp",
+          value: "(11) 98765-4321",
+          href: "https://wa.me/5511987654321",
+        },
+      ];
+
+      const footerLinks = [
+        { label: "Política de Privacidade", href: "#privacy" },
+        { label: "Termos de Serviço", href: "#terms" },
+        { label: "FAQ", href: "#faq" },
+        { label: "Trocas e Devoluções", href: "#returns" },
+      ];
+
+      // Reusable render functions
+      function renderNavItems(items) {
+        return items
+          .map(
+            (item) =>
+              '<li><a href="' +
+              item.href +
+              '" class="text-text-light hover:text-accent font-medium transition">' +
+              item.label +
+              "</a></li>",
+          )
+          .join("");
+      }
+
+      function renderProductCard(product, type) {
+        return (
+          '<div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">' +
+          '<img src="' +
+          product.images[0] +
+          '" alt="' +
+          product.name +
+          '" class="w-full h-64 object-cover rounded-lg mb-4">' +
+          '<h4 class="text-xl font-semibold mb-4 text-center">' +
+          product.name +
+          "</h4>" +
+          '<button data-product-id="' +
+          product.id +
+          '" data-product-type="' +
+          type +
+          '" class="w-full py-3 bg-secondary text-text font-medium rounded-lg hover:bg-accent hover:text-white transition">Ver Mais Fotos</button>' +
+          "</div>"
+        );
+      }
+
+      function renderProductGrid(items, type) {
+        return items.map((item) => renderProductCard(item, type)).join("");
+      }
+
+      function renderStepCard(step) {
+        return (
+          '<div class="bg-primary rounded-lg p-6 shadow-sm">' +
+          '<div class="text-3xl mb-4">' +
+          step.icon +
+          "</div>" +
+          '<h4 class="text-lg font-semibold mb-2">' +
+          step.title +
+          "</h4>" +
+          '<p class="text-text-light">' +
+          step.description +
+          "</p>" +
+          "</div>"
+        );
+      }
+
+      function renderStepsGrid(items) {
+        return items.map(renderStepCard).join("");
+      }
+
+      function renderContactItem(item) {
+        return (
+          '<li class="flex items-center gap-2">' +
+          '<span class="font-medium">' +
+          item.label +
+          ":</span>" +
+          '<a href="' +
+          item.href +
+          '" class="text-accent hover:text-blue-500 transition">' +
+          item.value +
+          "</a>" +
+          "</li>"
+        );
+      }
+
+      function renderContactList(items) {
+        return items.map(renderContactItem).join("");
+      }
+
+      function renderFooterLink(item) {
+        return (
+          '<li><a href="' +
+          item.href +
+          '" class="text-text-light hover:text-accent transition">' +
+          item.label +
+          "</a></li>"
+        );
+      }
+
+      function renderFooterLinks(items) {
+        return items.map(renderFooterLink).join("");
+      }
+
+      // Page initialization
+      document.getElementById("nav-list").innerHTML =
+        renderNavItems(navigationItems);
+      document.getElementById("glasses-grid").innerHTML = renderProductGrid(
+        glassesModels,
+        "glasses",
+      );
+      document.getElementById("watches-grid").innerHTML = renderProductGrid(
+        watchesModels,
+        "watches",
+      );
+      document.getElementById("steps-list").innerHTML = renderStepsGrid(steps);
+      document.getElementById("contact-list").innerHTML =
+        renderContactList(contactInfo);
+      document.getElementById("footer-links").innerHTML =
+        renderFooterLinks(footerLinks);
+
+      // Event handling for product cards
+      document.addEventListener("click", function (event) {
+        const productBtn = event.target.closest("[data-product-id]");
+        if (productBtn) {
+          event.preventDefault();
+          const productId = productBtn.getAttribute("data-product-id");
+          const productType = productBtn.getAttribute("data-product-type");
+          const productList =
+            productType === "glasses" ? glassesModels : watchesModels;
+          const product = productList.find((p) => p.id === productId);
+          if (product) {
+            openImageModal(product, productType);
+          }
+        }
+
+        const navLink = event.target.closest("a[href^='#']");
+        if (navLink) {
+          event.preventDefault();
+          const targetId = navLink.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         }
       });
 
-      backToTopButton.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+      function openImageModal(product, type) {
+        let currentImageIndex = 0;
 
-      // Smooth scrolling for all links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
+        const modalHtml =
+          '<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">' +
+          '<div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-8">' +
+          '<div class="flex justify-between items-start mb-6">' +
+          '<h3 class="text-2xl font-bold">' +
+          product.name +
+          "</h3>" +
+          '<button onclick="closeModal()" class="text-text-light hover:text-text">✕</button>' +
+          "</div>" +
+          '<div class="relative mb-6">' +
+          '<img id="modal-main-image" src="' +
+          product.images[0] +
+          '" alt="' +
+          product.name +
+          '" class="w-full h-96 object-cover rounded-lg">' +
+          '<div class="absolute inset-0 flex items-center justify-between p-4">' +
+          '<button id="prev-btn" class="bg-white bg-opacity-80 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-100 transition">❮</button>' +
+          '<button id="next-btn" class="bg-white bg-opacity-80 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-100 transition">❯</button>' +
+          "</div>" +
+          "</div>" +
+          '<div class="flex gap-2 mb-6 justify-center">' +
+          product.images
+            .map(
+              (img, index) =>
+                '<button data-index="' +
+                index +
+                '" class="thumbnail-btn w-16 h-16 rounded-lg overflow-hidden border-2 border-transparent hover:border-accent transition"><img src="' +
+                img +
+                '" alt="Miniatura ' +
+                (index + 1) +
+                '" class="w-full h-full object-cover"></button>',
+            )
+            .join("") +
+          "</div>" +
+          '<div class="flex gap-4">' +
+          '<button onclick="closeModal()" class="px-6 py-3 bg-gray-200 text-text rounded-lg hover:bg-gray-300 transition">Voltar</button>' +
+          '<a href="https://www.instagram.com/bn.lupas" target="_blank" class="px-6 py-3 bg-accent text-white rounded-lg hover:bg-blue-500 transition flex items-center gap-2">' +
+          "<span>Comprar via Instagram DM</span>" +
+          '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.691-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.947-.073zM12 7.932a4.068 4.068 0 1 0 0 8.136 4.068 4.068 0 0 0 0-8.136zm0 1.5a2.568 2.568 0 1 1 0 5.136 2.568 2.568 0 0 0 0-5.136zm6.3-3.1a.95.95 0 1 0 0 1.9.95.95 0 0 0 0-1.9z"></path></svg>' +
+          "</a>" +
+          "</div>" +
+          "</div>" +
+          "</div>";
 
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            window.scrollTo({
-              top: target.offsetTop - 100,
-              behavior: "smooth",
-            });
+        const modalContainer = document.createElement("div");
+        modalContainer.innerHTML = modalHtml;
+        document.body.appendChild(modalContainer.firstChild);
 
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById("mobile-menu");
-            if (!mobileMenu.classList.contains("hidden")) {
-              mobileMenu.classList.add("hidden");
+        // Initialize modal functionality
+        const modalElement = document.querySelector(
+          ".fixed.inset-0.bg-black.bg-opacity-50",
+        );
+        const mainImage = document.getElementById("modal-main-image");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const thumbnailBtns = document.querySelectorAll(".thumbnail-btn");
+
+        function updateImage(index) {
+          currentImageIndex = index;
+          mainImage.src = product.images[index];
+
+          // Update thumbnail borders
+          thumbnailBtns.forEach((btn, i) => {
+            if (i === index) {
+              btn.classList.add("border-accent");
+              btn.classList.remove("border-transparent");
+            } else {
+              btn.classList.remove("border-accent");
+              btn.classList.add("border-transparent");
             }
+          });
+        }
+
+        prevBtn.addEventListener("click", function () {
+          let newIndex = currentImageIndex - 1;
+          if (newIndex < 0) newIndex = product.images.length - 1;
+          updateImage(newIndex);
+        });
+
+        nextBtn.addEventListener("click", function () {
+          let newIndex = currentImageIndex + 1;
+          if (newIndex >= product.images.length) newIndex = 0;
+          updateImage(newIndex);
+        });
+
+        thumbnailBtns.forEach((btn, index) => {
+          btn.addEventListener("click", function () {
+            updateImage(index);
+          });
+        });
+
+        // Close modal on escape key
+        document.addEventListener("keydown", function handleKeydown(e) {
+          if (e.key === "Escape") {
+            closeModal();
+            document.removeEventListener("keydown", handleKeydown);
           }
         });
+      }
+
+      function closeModal() {
+        const modal = document.querySelector(
+          ".fixed.inset-0.bg-black.bg-opacity-50",
+        );
+        if (modal) {
+          modal.remove();
+        }
+      }
+    </script>
+  </body>
+</html>
+<!doctype html>
+<html lang="pt">
+  <head>
+    <base target="_self" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BN Lupas - Catálogo de Óculos e Relógios</title>
+    <meta
+      name="description"
+      content="Catálogo completo de óculos e relógios da BN Lupas. Modelos Juliet, Corvette, Romeu 2, Doublé X e muito mais."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ffffff",
+              secondary: "#e0f2fe",
+              accent: "#38bdf8",
+              text: "#1e1e1e",
+              "text-light": "#666666",
+            },
+            fontFamily: {
+              sans: ["Inter", "Helvetica", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+      * {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-primary text-text">
+    <header class="sticky top-0 z-50 bg-primary shadow-sm">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-2">
+            <img
+              src="https://picsum.photos/40?random=logo"
+              alt="Logo BN Lupas"
+              class="rounded-full"
+            />
+            <h1 class="text-xl font-bold">BN Lupas</h1>
+          </div>
+          <ul id="nav-list" class="hidden md:flex gap-6"></ul>
+          <div class="flex items-center gap-4">
+            <a
+              href="https://www.instagram.com/bn.lupas"
+              target="_blank"
+              class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-blue-500 transition"
+              >Instagram DM</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-6">Catálogo de Óculos</h2>
+        <p class="text-text-light mb-8">
+          Explore nossos modelos disponíveis. Clique em qualquer modelo para ver
+          mais fotos.
+        </p>
+        <div
+          id="glasses-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        ></div>
+      </section>
+
+      <section class="mb-12">
+        <h3 class="text-2xl font-semibold mb-6">Catálogo de Relógios</h3>
+        <p class="text-text-light mb-8">
+          Relógios de marca com qualidade premium.
+        </p>
+        <div
+          id="watches-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        ></div>
+      </section>
+
+      <section class="mb-12 bg-secondary p-8 rounded-xl">
+        <h3 class="text-2xl font-semibold mb-4">Como Comprar</h3>
+        <div
+          id="steps-list"
+          class="grid grid-cols-1 md:grid-cols-3 gap-6"
+        ></div>
+      </section>
+    </main>
+
+    <footer class="bg-secondary py-12">
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start gap-8"
+        >
+          <div class="flex-1">
+            <h4 class="text-lg font-semibold mb-4">BN Lupas</h4>
+            <p class="text-text-light mb-4">
+              Loja online especializada em óculos e relógios modernos e
+              elegantes.
+            </p>
+            <a
+              href="https://www.instagram.com/bn.lupas"
+              target="_blank"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg hover:bg-blue-500 transition"
+            >
+              <span>Comprar via Instagram DM</span>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.691-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.947-.073zM12 7.932a4.068 4.068 0 1 0 0 8.136 4.068 4.068 0 0 0 0-8.136zm0 1.5a2.568 2.568 0 1 1 0 5.136 2.568 2.568 0 0 0 0-5.136zm6.3-3.1a.95.95 0 1 0 0 1.9.95.95 0 0 0 0-1.9z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="flex-1">
+            <h4 class="text-lg font-semibold mb-4">Contato</h4>
+            <ul id="contact-list" class="space-y-2"></ul>
+          </div>
+          <div class="flex-1">
+            <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+            <ul id="footer-links" class="space-y-2"></ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Data layer
+      const navigationItems = [
+        { label: "Óculos", href: "#glasses" },
+        { label: "Relógios", href: "#watches" },
+        { label: "Como Comprar", href: "#how-to-buy" },
+        { label: "Contato", href: "#contact" },
+      ];
+
+      const glassesModels = [
+        {
+          id: "juliet",
+          name: "Juliet",
+          images: [
+            "https://picsum.photos/600/400?random=glasses1a",
+            "https://picsum.photos/600/400?random=glasses1b",
+            "https://picsum.photos/600/400?random=glasses1c",
+          ],
+        },
+        {
+          id: "corvette-tuto",
+          name: "Corvette Tuto",
+          images: [
+            "https://picsum.photos/600/400?random=glasses2a",
+            "https://picsum.photos/600/400?random=glasses2b",
+            "https://picsum.photos/600/400?random=glasses2c",
+          ],
+        },
+        {
+          id: "romeu-2",
+          name: "Romeu 2",
+          images: [
+            "https://picsum.photos/600/400?random=glasses3a",
+            "https://picsum.photos/600/400?random=glasses3b",
+            "https://picsum.photos/600/400?random=glasses3c",
+          ],
+        },
+        {
+          id: "double-x",
+          name: "Doublé X",
+          images: [
+            "https://picsum.photos/600/400?random=glasses4a",
+            "https://picsum.photos/600/400?random=glasses4b",
+            "https://picsum.photos/600/400?random=glasses4c",
+          ],
+        },
+        {
+          id: "penny",
+          name: "Penny",
+          images: [
+            "https://picsum.photos/600/400?random=glasses5a",
+            "https://picsum.photos/600/400?random=glasses5b",
+            "https://picsum.photos/600/400?random=glasses5c",
+          ],
+        },
+        {
+          id: "radar",
+          name: "Radar",
+          images: [
+            "https://picsum.photos/600/400?random=glasses6a",
+            "https://picsum.photos/600/400?random=glasses6b",
+            "https://picsum.photos/600/400?random=glasses6c",
+          ],
+        },
+        {
+          id: "descanso",
+          name: "Descanso",
+          images: [
+            "https://picsum.photos/600/400?random=glasses7a",
+            "https://picsum.photos/600/400?random=glasses7b",
+            "https://picsum.photos/600/400?random=glasses7c",
+          ],
+        },
+        {
+          id: "crosslink",
+          name: "Crosslink",
+          images: [
+            "https://picsum.photos/600/400?random=glasses8a",
+            "https://picsum.photos/600/400?random=glasses8b",
+            "https://picsum.photos/600/400?random=glasses8c",
+          ],
+        },
+        {
+          id: "vilao",
+          name: "Vilão",
+          images: [
+            "https://picsum.photos/600/400?random=glasses9a",
+            "https://picsum.photos/600/400?random=glasses9b",
+            "https://picsum.photos/600/400?random=glasses9c",
+          ],
+        },
+        {
+          id: "holbrook",
+          name: "Holbrook",
+          images: [
+            "https://picsum.photos/600/400?random=glasses10a",
+            "https://picsum.photos/600/400?random=glasses10b",
+            "https://picsum.photos/600/400?random=glasses10c",
+          ],
+        },
+        {
+          id: "plantaris",
+          name: "Plantaris",
+          images: [
+            "icons/lupas/Plantaris/IMG_5209.jpg",
+            "icons/lupas/Plantaris/IMG_5991.jpg",
+            "icons/lupas/Plantaris/IMG_5999.jpg",
+          ],
+        },
+        {
+          id: "jacket",
+          name: "Jacket",
+          images: [
+            "https://picsum.photos/600/400?random=glasses12a",
+            "https://picsum.photos/600/400?random=glasses12b",
+            "https://picsum.photos/600/400?random=glasses12c",
+          ],
+        },
+        {
+          id: "tican",
+          name: "Tican",
+          images: [
+            "https://picsum.photos/600/400?random=glasses13a",
+            "https://picsum.photos/600/400?random=glasses13b",
+            "https://picsum.photos/600/400?random=glasses13c",
+          ],
+        },
+        {
+          id: "minute",
+          name: "Minute",
+          images: [
+            "https://picsum.photos/600/400?random=glasses14a",
+            "https://picsum.photos/600/400?random=glasses14b",
+            "https://picsum.photos/600/400?random=glasses14c",
+          ],
+        },
+        {
+          id: "plante",
+          name: "Plante",
+          images: [
+            "https://picsum.photos/600/400?random=glasses15a",
+            "https://picsum.photos/600/400?random=glasses15b",
+            "https://picsum.photos/600/400?random=glasses15c",
+          ],
+        },
+        {
+          id: "hstn",
+          name: "Hstn",
+          images: [
+            "https://picsum.photos/600/400?random=glasses16a",
+            "https://picsum.photos/600/400?random=glasses16b",
+            "https://picsum.photos/600/400?random=glasses16c",
+          ],
+        },
+        {
+          id: "lateralis",
+          name: "Lateralis",
+          images: [
+            "https://picsum.photos/600/400?random=glasses17a",
+            "https://picsum.photos/600/400?random=glasses17b",
+            "https://picsum.photos/600/400?random=glasses17c",
+          ],
+        },
+        {
+          id: "wire",
+          name: "Wire",
+          images: [
+            "https://picsum.photos/600/400?random=glasses18a",
+            "https://picsum.photos/600/400?random=glasses18b",
+            "https://picsum.photos/600/400?random=glasses18c",
+          ],
+        },
+        {
+          id: "flak-1",
+          name: "Flak 1.0",
+          images: [
+            "https://picsum.photos/600/400?random=glasses19a",
+            "https://picsum.photos/600/400?random=glasses19b",
+            "https://picsum.photos/600/400?random=glasses19c",
+          ],
+        },
+        {
+          id: "kit-radar",
+          name: "Kit Radar",
+          images: [
+            "https://picsum.photos/600/400?random=glasses20a",
+            "https://picsum.photos/600/400?random=glasses20b",
+            "https://picsum.photos/600/400?random=glasses20c",
+          ],
+        },
+        {
+          id: "gascan",
+          name: "Gascan",
+          images: [
+            "https://picsum.photos/600/400?random=glasses21a",
+            "https://picsum.photos/600/400?random=glasses21b",
+            "https://picsum.photos/600/400?random=glasses21c",
+          ],
+        },
+        {
+          id: "dart",
+          name: "Dart",
+          images: [
+            "https://picsum.photos/600/400?random=glasses22a",
+            "https://picsum.photos/600/400?random=glasses22b",
+            "https://picsum.photos/600/400?random=glasses22c",
+          ],
+        },
+        {
+          id: "eye-jacket-redux",
+          name: "Eye Jacket Redux",
+          images: [
+            "https://picsum.photos/600/400?random=glasses23a",
+            "https://picsum.photos/600/400?random=glasses23b",
+            "https://picsum.photos/600/400?random=glasses23c",
+          ],
+        },
+      ];
+
+      const watchesModels = [
+        {
+          id: "lacoste-vivara",
+          name: "Lacoste Vivara P.A",
+          images: [
+            "https://picsum.photos/600/400?random=watch1a",
+            "https://picsum.photos/600/400?random=watch1b",
+            "https://picsum.photos/600/400?random=watch1c",
+          ],
+        },
+        {
+          id: "boss",
+          name: "Boss",
+          images: [
+            "https://picsum.photos/600/400?random=watch2a",
+            "https://picsum.photos/600/400?random=watch2b",
+            "https://picsum.photos/600/400?random=watch2c",
+          ],
+        },
+        {
+          id: "g-shock",
+          name: "G-Shock P.A",
+          images: [
+            "https://picsum.photos/600/400?random=watch3a",
+            "https://picsum.photos/600/400?random=watch3b",
+            "https://picsum.photos/600/400?random=watch3c",
+          ],
+        },
+      ];
+
+      const steps = [
+        {
+          title: "Escolha o Modelo",
+          description:
+            "Selecione o óculos ou relógio que mais combina com você.",
+          icon: "👓",
+        },
+        {
+          title: "Veja as Fotos",
+          description: "Clique no modelo para ver todas as fotos disponíveis.",
+          icon: "📸",
+        },
+        {
+          title: "Contato via Instagram",
+          description:
+            "Envie uma mensagem direta no Instagram com o modelo escolhido.",
+          icon: "📱",
+        },
+      ];
+
+      const contactInfo = [
+        {
+          label: "Instagram DM",
+          value: "@bn.lupas",
+          href: "https://www.instagram.com/bn.lupas",
+        },
+        {
+          label: "E-mail",
+          value: "contato@bnlupas.com",
+          href: "mailto:contato@bnlupas.com",
+        },
+        {
+          label: "WhatsApp",
+          value: "(11) 98765-4321",
+          href: "https://wa.me/5511987654321",
+        },
+      ];
+
+      const footerLinks = [
+        { label: "Política de Privacidade", href: "#privacy" },
+        { label: "Termos de Serviço", href: "#terms" },
+        { label: "FAQ", href: "#faq" },
+        { label: "Trocas e Devoluções", href: "#returns" },
+      ];
+
+      // Reusable render functions
+      function renderNavItems(items) {
+        return items
+          .map(
+            (item) =>
+              '<li><a href="' +
+              item.href +
+              '" class="text-text-light hover:text-accent font-medium transition">' +
+              item.label +
+              "</a></li>",
+          )
+          .join("");
+      }
+
+      function renderProductCard(product, type) {
+        return (
+          '<div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">' +
+          '<img src="' +
+          product.images[0] +
+          '" alt="' +
+          product.name +
+          '" class="w-full h-64 object-cover rounded-lg mb-4">' +
+          '<h4 class="text-xl font-semibold mb-4 text-center">' +
+          product.name +
+          "</h4>" +
+          '<button data-product-id="' +
+          product.id +
+          '" data-product-type="' +
+          type +
+          '" class="w-full py-3 bg-secondary text-text font-medium rounded-lg hover:bg-accent hover:text-white transition">Ver Mais Fotos</button>' +
+          "</div>"
+        );
+      }
+
+      function renderProductGrid(items, type) {
+        return items.map((item) => renderProductCard(item, type)).join("");
+      }
+
+      function renderStepCard(step) {
+        return (
+          '<div class="bg-primary rounded-lg p-6 shadow-sm">' +
+          '<div class="text-3xl mb-4">' +
+          step.icon +
+          "</div>" +
+          '<h4 class="text-lg font-semibold mb-2">' +
+          step.title +
+          "</h4>" +
+          '<p class="text-text-light">' +
+          step.description +
+          "</p>" +
+          "</div>"
+        );
+      }
+
+      function renderStepsGrid(items) {
+        return items.map(renderStepCard).join("");
+      }
+
+      function renderContactItem(item) {
+        return (
+          '<li class="flex items-center gap-2">' +
+          '<span class="font-medium">' +
+          item.label +
+          ":</span>" +
+          '<a href="' +
+          item.href +
+          '" class="text-accent hover:text-blue-500 transition">' +
+          item.value +
+          "</a>" +
+          "</li>"
+        );
+      }
+
+      function renderContactList(items) {
+        return items.map(renderContactItem).join("");
+      }
+
+      function renderFooterLink(item) {
+        return (
+          '<li><a href="' +
+          item.href +
+          '" class="text-text-light hover:text-accent transition">' +
+          item.label +
+          "</a></li>"
+        );
+      }
+
+      function renderFooterLinks(items) {
+        return items.map(renderFooterLink).join("");
+      }
+
+      // Page initialization
+      document.getElementById("nav-list").innerHTML =
+        renderNavItems(navigationItems);
+      document.getElementById("glasses-grid").innerHTML = renderProductGrid(
+        glassesModels,
+        "glasses",
+      );
+      document.getElementById("watches-grid").innerHTML = renderProductGrid(
+        watchesModels,
+        "watches",
+      );
+      document.getElementById("steps-list").innerHTML = renderStepsGrid(steps);
+      document.getElementById("contact-list").innerHTML =
+        renderContactList(contactInfo);
+      document.getElementById("footer-links").innerHTML =
+        renderFooterLinks(footerLinks);
+
+      // Event handling for product cards
+      document.addEventListener("click", function (event) {
+        const productBtn = event.target.closest("[data-product-id]");
+        if (productBtn) {
+          event.preventDefault();
+          const productId = productBtn.getAttribute("data-product-id");
+          const productType = productBtn.getAttribute("data-product-type");
+          const productList =
+            productType === "glasses" ? glassesModels : watchesModels;
+          const product = productList.find((p) => p.id === productId);
+          if (product) {
+            openImageModal(product, productType);
+          }
+        }
+
+        const navLink = event.target.closest("a[href^='#']");
+        if (navLink) {
+          event.preventDefault();
+          const targetId = navLink.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }
       });
+
+      function openImageModal(product, type) {
+        let currentImageIndex = 0;
+
+        const modalHtml =
+          '<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">' +
+          '<div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-8">' +
+          '<div class="flex justify-between items-start mb-6">' +
+          '<h3 class="text-2xl font-bold">' +
+          product.name +
+          "</h3>" +
+          '<button onclick="closeModal()" class="text-text-light hover:text-text">✕</button>' +
+          "</div>" +
+          '<div class="relative mb-6">' +
+          '<img id="modal-main-image" src="' +
+          product.images[0] +
+          '" alt="' +
+          product.name +
+          '" class="w-full h-96 object-cover rounded-lg">' +
+          '<div class="absolute inset-0 flex items-center justify-between p-4">' +
+          '<button id="prev-btn" class="bg-white bg-opacity-80 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-100 transition">❮</button>' +
+          '<button id="next-btn" class="bg-white bg-opacity-80 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-100 transition">❯</button>' +
+          "</div>" +
+          "</div>" +
+          '<div class="flex gap-2 mb-6 justify-center">' +
+          product.images
+            .map(
+              (img, index) =>
+                '<button data-index="' +
+                index +
+                '" class="thumbnail-btn w-16 h-16 rounded-lg overflow-hidden border-2 border-transparent hover:border-accent transition"><img src="' +
+                img +
+                '" alt="Miniatura ' +
+                (index + 1) +
+                '" class="w-full h-full object-cover"></button>',
+            )
+            .join("") +
+          "</div>" +
+          '<div class="flex gap-4">' +
+          '<button onclick="closeModal()" class="px-6 py-3 bg-gray-200 text-text rounded-lg hover:bg-gray-300 transition">Voltar</button>' +
+          '<a href="https://www.instagram.com/bn.lupas target="_blank" class="px-6 py-3 bg-accent text-white rounded-lg hover:bg-blue-500 transition flex items-center gap-2">' +
+          "<span>Comprar via Instagram DM</span>" +
+          '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.691-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.947-.073zM12 7.932a4.068 4.068 0 1 0 0 8.136 4.068 4.068 0 0 0 0-8.136zm0 1.5a2.568 2.568 0 1 1 0 5.136 2.568 2.568 0 0 0 0-5.136zm6.3-3.1a.95.95 0 1 0 0 1.9.95.95 0 0 0 0-1.9z"></path></svg>' +
+          "</a>" +
+          "</div>" +
+          "</div>" +
+          "</div>";
+
+        const modalContainer = document.createElement("div");
+        modalContainer.innerHTML = modalHtml;
+        document.body.appendChild(modalContainer.firstChild);
+
+        // Initialize modal functionality
+        const modalElement = document.querySelector(
+          ".fixed.inset-0.bg-black.bg-opacity-50",
+        );
+        const mainImage = document.getElementById("modal-main-image");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const thumbnailBtns = document.querySelectorAll(".thumbnail-btn");
+
+        function updateImage(index) {
+          currentImageIndex = index;
+          mainImage.src = product.images[index];
+
+          // Update thumbnail borders
+          thumbnailBtns.forEach((btn, i) => {
+            if (i === index) {
+              btn.classList.add("border-accent");
+              btn.classList.remove("border-transparent");
+            } else {
+              btn.classList.remove("border-accent");
+              btn.classList.add("border-transparent");
+            }
+          });
+        }
+
+        prevBtn.addEventListener("click", function () {
+          let newIndex = currentImageIndex - 1;
+          if (newIndex < 0) newIndex = product.images.length - 1;
+          updateImage(newIndex);
+        });
+
+        nextBtn.addEventListener("click", function () {
+          let newIndex = currentImageIndex + 1;
+          if (newIndex >= product.images.length) newIndex = 0;
+          updateImage(newIndex);
+        });
+
+        thumbnailBtns.forEach((btn, index) => {
+          btn.addEventListener("click", function () {
+            updateImage(index);
+          });
+        });
+
+        // Close modal on escape key
+        document.addEventListener("keydown", function handleKeydown(e) {
+          if (e.key === "Escape") {
+            closeModal();
+            document.removeEventListener("keydown", handleKeydown);
+          }
+        });
+      }
+
+      function closeModal() {
+        const modal = document.querySelector(
+          ".fixed.inset-0.bg-black.bg-opacity-50",
+        );
+        if (modal) {
+          modal.remove();
+        }
+      }
     </script>
   </body>
 </html>
